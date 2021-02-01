@@ -3,11 +3,9 @@ $(renderPortfolio())
 
 function sendEmail(ev) {
   ev.preventDefault()
-  var email = $('#inputEmail1').val()
   var subject = $('#inputSubject1').val()
   var body = $('#inputTextarea1').val()
   var url = `https://mail.google.com/mail?view=cm&fs=1&to=squadinio13@gmail.com&su=${subject}&body=${body}`
-  console.log('email is', email)
   window.location = url
 }
 
@@ -19,12 +17,12 @@ function renderPortfolio() {
     strHTML += /*html*/ `
         <div class="col-md-4 col-sm-6 portfolio-item">
           <a class="portfolio-link" data-toggle="modal" href="#portfolioModal" onclick="renderModal('${project.id}')">
-            <div class="portfolio-hover">
+            <div class="portfolio-hover rounded">
               <div class="portfolio-hover-content">
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio/${project.id}.png" alt="">
+            <img class="img-fluid rounded" src="img/portfolio/${project.id}.png" alt="">
           </a>
           <div class="portfolio-caption">
             <h4>${project.name}</h4>
