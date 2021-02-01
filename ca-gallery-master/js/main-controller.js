@@ -1,6 +1,16 @@
 console.log('Starting up');
 $(renderPortfolio())
 
+function sendEmail(ev) {
+  ev.preventDefault()
+  var email = $('#inputEmail1').val()
+  var subject = $('#inputSubject1').val()
+  var body = $('#inputTextarea1').val() + '\n\n' + email
+  var url = `https://mail.google.com/mail?view=cm&fs=1&to=squadinio13@gmail.com&su=${subject}&body=${body}`
+  console.log('email is', email)
+  window.location = url
+}
+
 function renderPortfolio() {
   var projects = getProjects();
   //var strHTML = '<div class="row">'
@@ -42,9 +52,12 @@ function renderModal(projectId) {
                 <ul class="list-inline">
                   <li>${new Date(project.publishedAt).toLocaleDateString()}</li>
                 </ul>
+                <a href="projects/${project.id}/index.html">
+                  <button class="btn btn-success" onclick="window.location= 'projects/${project.id}/index.html' ">
+                  <i class="fa fa-envelope-open"></i> Play me!</button>
+                </a>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
-                  <i class="fa fa-times"></i>
-                  Close Project</button>
+                  <i class="fa fa-times"></i> Close Project</button>
               </div>
             </div>
           </div>`
