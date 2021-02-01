@@ -46,13 +46,13 @@ function renderModal(projectId) {
                 <h2>${project.name}</h2>
                 <p class="item-intro text-muted">${project.title}</p>
                 <img class="img-fluid d-block mx-auto" src="img/portfolio/${project.id}.png" alt="">
-                <p>${project.desc}</p>
-                <ul class="list-inline">
+                <p class="text-light">${project.desc}</p>
+                <ul class="list-inline text-muted">
                   <li>${new Date(project.publishedAt).toLocaleDateString()}</li>
                 </ul>
                 <a href="projects/${project.id}/index.html">
                   <button class="btn btn-success" onclick="window.location= 'projects/${project.id}/index.html' ">
-                  <i class="fa fa-envelope-open"></i> Play me!</button>
+                  <i class="fa fa-envelope-open"></i> Play Me!</button>
                 </a>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <i class="fa fa-times"></i> Close Project</button>

@@ -334,9 +334,11 @@ header.masthead .intro-text .intro-heading {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
 .portfolio-modal .modal-content h2 {
     font-size: 3em;
     margin-bottom: 15px;
+    color:var(--highlightColor)
 }
 .portfolio-modal .modal-content p {
     margin-bottom: 30px;
@@ -673,7 +675,7 @@ ul.social-buttons li a:hover {
 }
 .btn-primary:hover {
     color: white;
-    border-color: #f6bf01;
+    border-color:var(--highlightColor);
     background-color: var(--highlightColor);
 }
 .btn-primary.active,
@@ -716,6 +718,15 @@ fieldset[disabled] .btn-primary:hover {
 .btn-primary .badge {
     color: var(--mainColor);
     background-color: white;
+}
+.btn-success {
+    color: white;
+    background-color: var(--highlightColor);
+    border-color:var(--highlightColor)
+}
+.btn-success:hover{
+    background-color: rgb(240, 170, 64);
+    border-color: rgb(240, 170, 64);
 }
 .btn-xl {
     font-size: 18px;
