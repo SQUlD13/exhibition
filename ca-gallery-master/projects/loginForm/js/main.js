@@ -1,83 +1,76 @@
-'use strict';
+'use strict'
+
+
 
 function onInit() {
-    console.log('Hi');
-    renderTodos();
-}
-function renderTodos() {
-    var todos = getTodosForDisplay();
-    if (!todos.length) {
-        var strHTMLs = [`<p> There are no to-do's to display... </p>`]
-    } else {
-        strHTMLs = todos.map(function (todo) {
-            var className = (todo.isDone) ? 'done' : '';
-            return `<li class="${className}" onclick="onToggleTodo('${todo.id}')">
-                    ${todo.txt}
-                    <button onclick="onRemoveTodo('${todo.id}', event)">x</button>
-                    <div hidden class="modal-${todo.id}">
-                        <span> Are you sure? </span>
-                        <button onclick="onConfirmRemove('${todo.id}', event)">v</button>
-                        <button onclick="onCancelRemove('${todo.id}', event)">x</button>
-                    </div>
-                </li>`
-        })
-    }
-
-    // console.log('strHTMLs', strHTMLs)
-    document.querySelector('.todo-list').innerHTML = strHTMLs.join('');
-    document.querySelector('.total-todos').innerText = getTodosCount();
-    document.querySelector('.active-todos').innerText = getActiveTodosCount();
+    console.log('Initializing')
+    renderContent()
+    renderLogin()
 }
 
-function onConfirmRemove(todoId, ev) {
-    ev.stopPropagation();
-    removeTodo(todoId);
-    renderTodos();
-}
-function onRemoveTodo(todoId, ev) {
-    ev.stopPropagation();
-    var elModal = document.querySelector(`.modal-${todoId}`)
-    elModal.hidden = false;
-}
-function onCancelRemove(todoId, ev) {
-    ev.stopPropagation();
-    var elModal = document.querySelector(`.modal-${todoId}`)
-    elModal.hidden = true;
+function onLogOut(userName) {
+    console.log('Logging out')
+    toggleLogin()
+    renderLogin()
+    renderContent()
+    clearUserLocal()
 }
 
+function onFormSubmitInput(ev) {
+    ev.preventDefault()
 
-function onToggleTodo(todoId) {
-    toggleTodo(todoId)
-    renderTodos();
+    var userName = document.querySelector('input[id="userName-input"]').value
+    var password = document.querySelector('input[id="password-input"]').value
+
+    var user = doLogin(userName, password)//function that checks whether a user is confirmed - returns false if not, and the user if he is
+    if (user) {
+        toggleLogin()
+        renderLogin()
+        saveUserLocal(user)
+        renderContent(userName)
+    } else alertNonRegistered()
+
 }
 
-function onAddTodo(ev) {
-    ev.preventDefault();
-
-    var elTodoTxt = document.querySelector('input[name=todoTxt]');
-    var txt = elTodoTxt.value;
-    if (txt) {
-        var elTodoImportance = document.querySelector('input[name=importance]');
-        var importance = parseInt(elTodoImportance.value);
-        console.log('Adding todo:', txt, 'with importance', importance);
-        addTodo(txt, importance)
-        elTodoTxt.value = ''
-        renderTodos();
-    }
+function renderLogin() {
+    var elLoginContainer = document.querySelector('.login-container')
+    var strHTML = `<h1>Please enter your information</h1>
+            <form onsubmit="onFormSubmitInput(event)">
+                <label for="userName-input">Username:</label>
+                <input type="text" name="text-field" id="userName-input" required>
+                <label for="password-input">Password:</label>
+                <input type="password" name="text-field" id="password-input" required>
+                <input type="submit" value="Log-in">
+            </form>`;
+    elLoginContainer.innerHTML = strHTML
+    if (gIsActive) {
+        elLoginContainer.classList.remove('up')
+    } else elLoginContainer.classList.add('up')
 }
 
-function onSetFilter() {
-    var elFilterBy = document.querySelector('select[name=filterBy]');
-    var filterBy = elFilterBy.value;
-    console.log('Filtering by', filterBy);
-    setFilter(filterBy);
-    renderTodos();
+function renderContent(userName = 'Anon') {
+    var user = getCurrentUser();
+    var isAdmin = (user) ? user.isAdmin : false;
+    console.log('curent user is', user)
+    var hiddenStr = (isAdmin) ? '' : 'hidden'
+    var elContentContainer = document.querySelector('.content')
+    var strHTML = `<h1>Welcome back <br><span>${userName}</span></h1>
+            <div class="main-content">
+                MAIN CONTENT
+            </div>
+            <div class="footer">
+                <form action="admin.html">
+                    <button ${hiddenStr} type="submit" action="admin.html" class="admin" onclick="">Admin Panel</button>
+                </form>
+                <button class="logout" onclick="onLogOut('${userName}')">Log-out</button>
+                </div>`
+    elContentContainer.innerHTML = strHTML
+    // if (!gIsActive) {
+    //     elContentContainer.classList.remove('down')
+    // } else elContentContainer.classList.add('down')
 }
 
-function onSetSort() {
-    var elSortBy = document.querySelector('select[name=sortBy]');
-    var sortBy = elSortBy.value;
-    console.log('sorting by', sortBy);
-    setSort(sortBy);
-    renderTodos();
+function alertNonRegistered() {
+    console.log('User not registered - TO DO!')
 }
+

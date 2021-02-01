@@ -1,18 +1,59 @@
-*{
-    box-sizing: border-box;
-}
-body {
-    background-color: lightblue;
-    margin: 0;
-}
+@import url("../css/base.css");
+@import url("../css/login.css");
 
-.done {
-    text-decoration: line-through;
+.content{
+    flex:.75;
+    position: absolute;
 }
+.content h1{
+    flex:.5;
 
-section {
-    background-color: cornsilk;
-    padding: 5px;
     border-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: rgb(91, 76, 231);
+}
+.content .main-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+
+    border-radius: 15px;
+    margin:15px;
+    width: 90%;
+    height: 90%;
+    background: #222;
+    font-family: 'Rubik Mono One', sans-serif;
+    color:gainsboro;
+    text-shadow: 3px 3px 0 rgba(255, 248, 220, 0.25);
+}
+.content .footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width:100%;
+}
+
+.content button{
+    border:0;
+    background-color:rgb(91, 76, 231);
+    font-family: 'Rubik Mono One', sans-serif;
+    margin:10px;
+    padding:5px;
+}
+
+
+
+
+
+.up{
+    transform: translateY(-100vh);
+    transition: transform 2s ease-in;
+}
+.down{
+    transform: translateY(100vh);
+    transition: transform 2s ease-in;
 }
 

@@ -5,7 +5,7 @@ function sendEmail(ev) {
   ev.preventDefault()
   var email = $('#inputEmail1').val()
   var subject = $('#inputSubject1').val()
-  var body = $('#inputTextarea1').val() + '\n\n' + email
+  var body = $('#inputTextarea1').val()
   var url = `https://mail.google.com/mail?view=cm&fs=1&to=squadinio13@gmail.com&su=${subject}&body=${body}`
   console.log('email is', email)
   window.location = url

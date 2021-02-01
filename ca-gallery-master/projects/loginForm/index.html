@@ -4,48 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todos MVC</title>
     <link rel="stylesheet" href="css/main.css">
+    <title>Login Form</title>
 </head>
 
 <body onload="onInit()">
-    <h1>Todos MVC</h1>
+    <div class="viewport-container">
+        <div class="container content"></div>
+        <div class="login-container container"></div>
+    </div>
 
-    <section>
-        <h2>Filter</h2>
-        <select onchange="onSetFilter()" name="filterBy">
-            <option value="all">All</option>
-            <option value="active">Active</option>
-            <option value="done">Done</option>
-        </select>
-        <h2>Sort</h2>
-        <select onchange="onSetSort()" name="sortBy">
-            <option value="importance">Importance</option>
-            <option value="date">Date Created</option>
-            <option value="txt">Content</option>
-        </select>
-    </section>
 
-    <ul class="todo-list">
-    </ul>
-    <p>
-        Total Todos: <span class="total-todos"></span>
-        Active: <span class="active-todos"></span>
-    </p>
-    <section>
-        <h2>Add Todo</h2>
-        <form onsubmit="onAddTodo(event)">
-            <input type="text" placeholder="What todo?" name="todoTxt" />
-            <button>Save</button>
-            <label for="importance-number"> Importance: </label>
-            <input type="number" id="importance-number" name="importance" min="1" max="3">
-            <!-- <button type="button">No Submitush</button> -->
-
-        </form>
-    </section>
-
+    <script src="js/services/util.js"></script>
     <script src="js/services/storage-service.js"></script>
-    <script src="js/services/todo-service.js"></script>
+    <script src="js/services/user-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 

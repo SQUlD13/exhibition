@@ -23,7 +23,7 @@ var gProjects = [
         id: 'loginForm',
         name: 'Login Form',
         title: 'Done endless times before, surely',
-        desc: 'Practicing CSS to make things look satisfying, along with creating a database (Admittedly on the local cache), and manipulating it using a correct data structure.',
+        desc: 'Practicing CSS to make things look satisfying, along with creating a database (Admittedly on the local cache), and manipulating it using a correct data structure. Try admin 1234',
         url: 'projs/minesweeper',
         labels: ["CSS", "caching", "responsiveness"],
         publishedAt: 1611756271000
