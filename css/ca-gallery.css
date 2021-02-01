@@ -722,7 +722,10 @@ fieldset[disabled] .btn-primary:hover {
 .btn-success {
     color: white;
     background-color: var(--highlightColor);
-    border-color:var(--highlightColor)
+    border-color:var(--highlightColor);
+    font-weight: 700;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
 }
 .btn-success:hover{
     background-color: rgb(240, 170, 64);
