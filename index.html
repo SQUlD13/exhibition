@@ -11,6 +11,7 @@
   <title>Exhibition</title>
 
   <!-- Bootstrap core CSS -->
+  <link rel="icon" href="img/logos/SQUID-white.png" type="image/png">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
@@ -34,7 +35,7 @@
 
     <!-- Contact -->
     <section id="contact">
-      <form onsubmit="sendEmail(event)">
+      <form class="mail-form">
         <div class="form-group">
           <label for="inputSubject1">Subject</label>
           <input type="text" class="form-control" id="inputSubject1" placeholder="Enter subject">
@@ -156,7 +157,9 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="team-member">
-          <img class="mx-auto rounded-circle " src="img/team/1.jpg" alt="Me" style="object-fit:cover">
+          <div class="image-wrapper rounded-circle">
+            <img class="mx-auto rounded-circle " src="img/team/1.jpg" alt="Me" style="object-fit:cover">
+          </div>
           <div class="content">
             <h4>Anton Zebnitski</h4>
             <p class="text-muted">AKA SQUID13</p>

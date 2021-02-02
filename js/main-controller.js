@@ -1,12 +1,15 @@
 console.log('Starting up');
-$(renderPortfolio())
+$(renderPortfolio(),
+  $('form.mail-form').on('submit', function (event) {
+    sendEmail(event); console.log(event)
+  }))
 
 function sendEmail(ev) {
   ev.preventDefault()
   var subject = $('#inputSubject1').val()
   var body = $('#inputTextarea1').val()
   var url = `https://mail.google.com/mail?view=cm&fs=1&to=squadinio13@gmail.com&su=${subject}&body=${body}`
-  window.location = url
+  window.open(url)
 }
 
 function renderPortfolio() {
@@ -51,7 +54,7 @@ function renderModal(projectId) {
                   <li>${new Date(project.publishedAt).toLocaleDateString()}</li>
                 </ul>
                 <a href="projects/${project.id}/index.html">
-                  <button class="btn btn-success" onclick="window.location= 'projects/${project.id}/index.html' ">
+                  <button class="btn btn-success" onclick="window.open('projects/${project.id}/index.html') ">
                   <i class="fa fa-envelope-open"></i> Play Me!</button>
                 </a>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">

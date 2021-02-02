@@ -1,6 +1,7 @@
 :root{
     --mainColor : rgb(132, 102, 168);
     --highlightColor : rgba(245, 217, 96);
+    --mainGradient:linear-gradient(320deg, rgba(132,102,168,255) 0%, rgba(245,217,96,255) 100%);
 }
 body {
     overflow-x: hidden;
@@ -123,7 +124,7 @@ body {
 }
 .offcanvas-aside-open {
     right: 0;
-    
+    min-width:300px;
 }
 
 #mainNav {
@@ -198,6 +199,7 @@ body {
 header.masthead {
     text-align: center;
     color: white;
+    position:relative;
     background: #222;
     background-image: url("../img/header-bg.png");
     background-repeat: no-repeat;
@@ -207,7 +209,8 @@ header.masthead {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    
+    background-attachment: fixed;
+    object-fit: scale-down;    
 }
 header.masthead .intro-text {
     padding-top: 150px;
@@ -576,10 +579,15 @@ header.masthead .intro-text .intro-heading {
     align-items: center;
     position:relative;
 }
+.team-member .image-wrapper{
+    padding: 15px;
+    background: var(--mainGradient);
+}
 .team-member img {
     width: 225px;
     height: 225px;
-    border: 7px solid var(--mainColor);
+    /* border: 7px solid var(--mainColor); */
+    
     position:relative;
     left:0;
 }
