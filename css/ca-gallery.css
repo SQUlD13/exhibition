@@ -203,14 +203,9 @@ header.masthead {
     background: #222;
     background-image: url("../img/header-bg.png");
     background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     background-attachment: fixed;
-    object-fit: scale-down;    
+    background-position:top center;
+    background-size:contain;
 }
 header.masthead .intro-text {
     padding-top: 150px;
@@ -303,6 +298,7 @@ header.masthead .intro-text .intro-heading {
     margin: 0 auto;
     padding: 25px;
     text-align: center;
+    color:var(--highlightColor)
 }
 #portfolio .portfolio-item .portfolio-caption h4 {
     margin: 0;
